@@ -1,0 +1,22 @@
+<%= turbo_stream.append "posts" do %>
+    <div class="flex-col text-center">
+        <div class="px-4">
+            <a class="font-bold"> Owner: </a>
+            <%= @post.user.email %>
+        </div>
+        <div class="px-4">
+            <a class="font-bold"> Body: </a>
+            <%= @post.body %>
+        </div>
+        <div class="px-4">
+            <a class="font-bold"> Created at: </a>
+            <%= @post.created_at %>
+        </div>
+    </div>
+    <div class="justify-self-center"><%= image_tag @post.imagem.variant(:timeline), :class => "border-2 border-black" %>
+    </div>
+    <div class="justify-self-center">
+        <div class="px-4 text-teal-500 underline"><%= link_to "See more", post_path(@post) %> </div>
+        <div class="px-4 text-teal-500 underline"><%= link_to "Delete", post_path(@post), data: { turbo_method: :delete }%> </div>
+    </div>
+<% end %>

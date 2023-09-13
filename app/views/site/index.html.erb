@@ -1,0 +1,20 @@
+<div class="flex flex-col items-center">
+    <div class="p-5 flex flex-col items-center">
+        <div class="text-2xl font-bold"> Hi, I'm João Pedro Périco </div>
+        This is Portifolio L4, a portifolio site made as part of the Mix&Go Ruby on Rails course.
+    </div>
+
+    <% if !user_signed_in? %>
+        <div class="p-5 gradient"> It seems you're not logged in yet, as a first step I recommend that you log in, and register if necessary, in the top right corner of the page. </div>
+    <% elsif %>
+        <div class="p-5 gradient text-center">
+            <%= turbo_frame_tag "secondPageId" do %> 
+                Cool! Now you're logged in, the Devise Gem is beign used for user management!
+                <br/>
+                You should also click the link bellow
+                <br/>
+                <%= link_to "Trustable Link", second_page_path, class: "underline text-teal-600" %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

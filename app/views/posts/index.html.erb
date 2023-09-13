@@ -1,0 +1,39 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+
+  <div class="text-center mb-10 border-4 border-teal-400 mx-60">
+    <%= turbo_frame_tag "post-form" do %>
+      <%= link_to "Open new post form", new_post_path, class: "bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 border-b-4 border-teal-700 hover:border-teal-500 rounded"%>
+    <% end %>
+  </div>
+
+  <div class="text-center text-3xl font-bold">Posts list</div>
+
+  <div id="posts" class="grid grid-cols-3 gap-2">
+    <div class="text-2xl p-4 bg-gray-200 font-bold text-center">Post Info</div>
+    <div class="text-2xl p-4 bg-gray-200 font-bold text-center">Image</div>
+    <div class="text-2xl p-4 bg-gray-200 font-bold text-center">Actions</div>
+    <% @posts.each do |post| %>
+      <div class="flex-col text-center">
+        <div class="px-4">
+          <a class="font-bold"> Owner: </a>
+          <%= post.user.email %>
+        </div>
+        <div class="px-4">
+          <a class="font-bold"> Body: </a>
+          <%= post.body %>
+        </div>
+        <div class="px-4">
+          <a class="font-bold"> Created at: </a>
+          <%= post.created_at %>
+        </div>
+      </div>
+      <div class="justify-self-center"><%= image_tag post.imagem.variant(:timeline), :class => "border-2 border-black" %>
+      </div>
+      <div class="justify-self-center">
+        <div class="px-4 text-teal-500 underline"><%= link_to "See more", post_path(post) %> </div>
+        <div class="px-4 text-teal-500 underline"><%= link_to "Delete", post_path(post), data: { turbo_method: :delete }%> </div>
+      </div>
+    <% end %>
+  </div>
+    
+</div>

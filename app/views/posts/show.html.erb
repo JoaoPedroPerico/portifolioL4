@@ -1,0 +1,22 @@
+<div class="flex flex-col px-6 py-12 content-center items-center">
+
+    <!-- Col 1 -->
+    <div class="flex justify-around">
+        <div class="text-center text-black">
+            <div> Owner of the post: <%= @post.user.email %> </div>
+            <div> Post body: <%= @post.body %> </div>
+            <div> Post created at: <%= @post.created_at %> </div>
+        </div>
+
+        <div class="text-center">
+            <%= button_to 'Destroy this post', post_path(@post), method: :delete, class: "px-4 text-teal-500 underline" %>
+            <%= link_to 'Back to posts', posts_path, class: "px-4 text-teal-500 underline" %>
+        </div>
+    </div>
+
+    <!-- Col 2 -->
+    <div class="justify-self-center">
+        <%= image_tag @post.imagem, :class => "border-4 border-black" %>
+    </div>
+
+</div>
